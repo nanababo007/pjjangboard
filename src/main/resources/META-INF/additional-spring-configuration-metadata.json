@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "mybatis.type-aliases-packages",
+  "type": "java.lang.String",
+  "description": "A description for 'mybatis.type-aliases-packages'"
+}]}

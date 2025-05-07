@@ -1,0 +1,10 @@
+* dao
+- data access object (데이터 접근 객체)
+
+* PrefixRequestDao
+- 데이터 요청 객체.
+- 웹페이지 요청 데이터 객체로부터, 혹은 기타 경우에, 데이터 요청 정보 데이터를 설정하는 객체.
+
+* PrefixResponseDao
+- 데이터 응답 객체.
+- 데이터 조회 시, 조회 데이터를 저장하는 객체.

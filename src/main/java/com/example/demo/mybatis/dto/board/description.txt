@@ -1,0 +1,5 @@
+* PrefixRequestDto
+- 웹페이지 요청 정보를 받는 객체
+
+* PrefixResponseDto
+- 웹페이지 응답 정보를 설정하는 객체

@@ -1,0 +1,30 @@
+server:
+  port: 9091
+spring:
+  application:
+    name: demo-mybatis
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mysql://localhost:3306/squareaffixcms?&serverTimezone=UTC&autoReconnect=true&allowMultiQueries=true&characterEncoding=UTF-8
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: squareaffixcms
+      password: 19990326
+      maximum-pool-size: 50
+      minimum-idle: 50
+      connection-timeout: 5000
+      connection-init-sql: SELECT 1
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      auto-commit: true
+  devtools:
+    livereload:
+      enabled: false
+    restart:
+      enabled: false
+  security:
+    user:
+      name: admin
+      password: 1234
+mybatis:
+  mapper-locations: classpath:/com/example/demo/mybatis/mapper/xml/*.xml
+  type-aliases-packages: com.example.demo.mybatis.dao,com.example.demo.mybatis.dto
