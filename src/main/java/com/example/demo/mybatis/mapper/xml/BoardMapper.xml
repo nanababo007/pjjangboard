@@ -3,14 +3,28 @@
 <mapper namespace="com.example.demo.mybatis.mapper.BoardMapper">
 
 	<select id="getBoardList" parameterType="BoardListRequestDao" resultType="BoardListResponseDao">
+		/* BoardMapper.getBoardList */
 		SELECT
 			a.bd_seq as bdSeq
 			,a.bd_title as bdTitle
-		FROM tb_board_info a
-		where 1=1
+		<include refid="sqlGetBoardListFromQuery"></include>
+		<include refid="com.example.demo.mybatis.mapper.CommonMapper.sqlPagerConditionQuery"></include>
 	</select>
 
+	<select id="getBoardListTotalCount" parameterType="BoardListRequestDao" resultType="long">
+		/* BoardMapper.getBoardListTotalCount */
+		SELECT
+			count(*)
+		<include refid="sqlGetBoardListFromQuery"></include>
+	</select>
+
+	<sql id="sqlGetBoardListFromQuery">
+		FROM tb_board_info a
+		where 1=1
+	</sql>
+
 	<select id="getBoardAllList" parameterType="BoardListRequestDao" resultType="BoardListResponseDao">
+		/* BoardMapper.getBoardAllList */
 		SELECT
 			a.bd_seq as bdSeq
 			,a.bd_title as bdTitle
@@ -18,6 +32,7 @@
 	</select>
 
 	<insert id="insertBoard" parameterType="BoardInsertRequestDao">
+		/* BoardMapper.insertBoard */
 		insert into tb_board_info
 			a.bd_title
 		) values (
@@ -26,6 +41,7 @@
 	</insert>
 
 	<update id="updateBoard" parameterType="BoardUpdateRequestDao">
+		/* BoardMapper.updateBoard */
 		update tb_board_info
 		set
 			a.bd_title = #{bd_title}
@@ -33,6 +49,7 @@
 	</update>
 
 	<update id="updateDeleteBoard" parameterType="BoardUpdateDeleteRequestDao">
+		/* BoardMapper.updateDeleteBoard */
 		update tb_board_info
 		set
 			a.del_yn = 'Y'

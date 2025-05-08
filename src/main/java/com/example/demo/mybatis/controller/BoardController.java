@@ -34,9 +34,11 @@ public class BoardController {
 		List<BoardListResponseDao> boardListResponseDao = null;
 		List<BoardListResponseDto> boardListResponseDto = null;
 		ResponseEntity<Map<String,Object>> returnValue = null;
+		long boardListTotalCount = 0;
 		//--- 본문 코드 영역.
 		boardListRequestDao = boardListRequestDto.toRequestDao();
-		PagerUtil.calcPageForDao(pager, boardListRequestDao);
+		boardListTotalCount = boardService.getBoardListTotalCount(boardListRequestDao);
+		PagerUtil.calcPageForDao(pager,boardListRequestDao,boardListTotalCount);
 		boardListResponseDao = boardService.getBoardList(boardListRequestDao);
 		boardListResponseDto = BoardListResponseDtoUtil.getResponseDtoListFromResponseDaoList(boardListResponseDao);
 		responseData.put("boardListResponseDto", boardListResponseDto);

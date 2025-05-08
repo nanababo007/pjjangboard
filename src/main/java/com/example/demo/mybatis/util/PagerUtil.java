@@ -24,11 +24,19 @@ public class PagerUtil {
 		commonListPagerRequestDto.setPageSize(pager.getPageSize());
 		commonListPagerRequestDto.setBlockSize(pager.getBlockSize());
 	}
+	public static void calcPageForDto(Pager pager, CommonListPagerRequestDto commonListPagerRequestDto, long totalRecordCount) {
+		pager.setTotalBoard(totalRecordCount);
+		calcPageForDto(pager, commonListPagerRequestDto);
+	}
 	public static void calcPageForDao(Pager pager, CommonListPagerRequestDao commonListPagerRequestDao) {
 		pager.calcPage();
 		commonListPagerRequestDao.setPageNum(pager.getPageNum());
 		commonListPagerRequestDao.setTotalBoard(pager.getTotalBoard());
 		commonListPagerRequestDao.setPageSize(pager.getPageSize());
 		commonListPagerRequestDao.setBlockSize(pager.getBlockSize());
+	}
+	public static void calcPageForDao(Pager pager, CommonListPagerRequestDao commonListPagerRequestDao, long totalRecordCount) {
+		pager.setTotalBoard(totalRecordCount);
+		calcPageForDao(pager, commonListPagerRequestDao);
 	}
 }

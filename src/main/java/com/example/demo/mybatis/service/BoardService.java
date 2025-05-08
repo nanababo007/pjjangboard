@@ -10,6 +10,7 @@ import com.example.demo.mybatis.dao.board.BoardUpdateRequestDao;
 
 public interface BoardService {
 	public List<BoardListResponseDao> getBoardList(BoardListRequestDao boardListRequestDao) throws Exception;
+	public long getBoardListTotalCount(BoardListRequestDao boardListRequestDao) throws Exception;
 	public List<BoardListResponseDao> getBoardAllList(BoardListRequestDao boardListRequestDao) throws Exception;
 	public int insertBoard(BoardInsertRequestDao boarInsertRequestDao);
 	public int updateBoard(BoardUpdateRequestDao boardUpdateRequestDao);
