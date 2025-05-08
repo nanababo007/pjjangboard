@@ -16,7 +16,6 @@ import com.example.demo.mybatis.dao.board.BoardListResponseDao;
 import com.example.demo.mybatis.dto.board.BoardListRequestDto;
 import com.example.demo.mybatis.dto.board.BoardListResponseDto;
 import com.example.demo.mybatis.dto.board.BoardListResponseDtoUtil;
-import com.example.demo.mybatis.dto.common.CommonListPagerRequestDto;
 import com.example.demo.mybatis.service.BoardService;
 import com.example.demo.mybatis.util.PagerUtil;
 
@@ -36,8 +35,6 @@ public class BoardController {
 		List<BoardListResponseDto> boardListResponseDto = null;
 		ResponseEntity<Map<String,Object>> returnValue = null;
 		//--- 본문 코드 영역.
-		System.out.println("boardListRequestDto : "+ boardListRequestDto );
-
 		boardListRequestDao = boardListRequestDto.toRequestDao();
 		PagerUtil.calcPageForDao(pager, boardListRequestDao);
 		boardListResponseDao = boardService.getBoardList(boardListRequestDao);
