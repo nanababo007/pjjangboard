@@ -15,6 +15,7 @@ import com.example.demo.mybatis.dao.board.BoardUpdateRequestDao;
 @Repository
 public interface BoardMapper {
 	public List<BoardListResponseDao> getBoardList(BoardListRequestDao boardListRequestDao) throws Exception;
+	public List<BoardListResponseDao> getBoardAllList(BoardListRequestDao boardListRequestDao) throws Exception;
 	public int insertBoard(BoardInsertRequestDao boarInsertRequestDao);
 	public int updateBoard(BoardUpdateRequestDao boardUpdateRequestDao);
 	public int updateDeleteBoard(BoardUpdateDeleteRequestDao boardUpdateDeleteRequestDao);

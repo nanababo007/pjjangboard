@@ -5,8 +5,10 @@ spring:
     name: demo-mybatis
   datasource:
     hikari:
-      jdbc-url: jdbc:mysql://localhost:3306/squareaffixcms?&serverTimezone=UTC&autoReconnect=true&allowMultiQueries=true&characterEncoding=UTF-8
-      driver-class-name: com.mysql.cj.jdbc.Driver
+      #jdbc-url: jdbc:mysql://localhost:3306/squareaffixcms?&serverTimezone=UTC&autoReconnect=true&allowMultiQueries=true&characterEncoding=UTF-8
+      #driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:log4jdbc:mysql://localhost:3306/squareaffixcms?&serverTimezone=UTC&autoReconnect=true&allowMultiQueries=true&characterEncoding=UTF-8
+      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
       username: squareaffixcms
       password: 19990326
       maximum-pool-size: 50
@@ -28,3 +30,12 @@ spring:
 mybatis:
   mapper-locations: classpath:/com/example/demo/mybatis/mapper/xml/*.xml
   type-aliases-packages: com.example.demo.mybatis.dao,com.example.demo.mybatis.dto
+logging:
+  level:
+    jdbc:
+      sqlonly: DEBUG
+      sqltiming: INFO
+      resultsettable: INFO
+      audit: OFF
+      resultset: OFF
+      connection: OFF

@@ -21,6 +21,9 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardListResponseDao> getBoardList(BoardListRequestDao boardListRequestDao) throws Exception {
 		return boardMapper.getBoardList(boardListRequestDao);
 	}
+	public List<BoardListResponseDao> getBoardAllList(BoardListRequestDao boardListRequestDao) throws Exception {
+		return boardMapper.getBoardAllList(boardListRequestDao);
+	}
 	public int insertBoard(BoardInsertRequestDao boarInsertRequestDao) {
 		return boardMapper.insertBoard(boarInsertRequestDao);
 	}

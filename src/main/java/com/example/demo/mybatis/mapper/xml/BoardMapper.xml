@@ -7,6 +7,14 @@
 			a.bd_seq as bdSeq
 			,a.bd_title as bdTitle
 		FROM tb_board_info a
+		where 1=1
+	</select>
+
+	<select id="getBoardAllList" parameterType="BoardListRequestDao" resultType="BoardListResponseDao">
+		SELECT
+			a.bd_seq as bdSeq
+			,a.bd_title as bdTitle
+		FROM tb_board_info a
 	</select>
 
 	<insert id="insertBoard" parameterType="BoardInsertRequestDao">
