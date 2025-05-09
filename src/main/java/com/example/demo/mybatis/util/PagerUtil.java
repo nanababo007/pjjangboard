@@ -8,35 +8,28 @@ public class PagerUtil {
 	public static Pager getPager() {
 		return new Pager();
 	}
-	public static Pager getPager(int pageNum, int totalBoard, int pageSize, int blockSize) {
+	public static Pager getPager(long pageNum, long totalBoard, long pageSize, long blockSize) {
 		return new Pager(pageNum, totalBoard, pageSize, blockSize);
 	}
-	public static void setPager(Pager pager, int pageNum, int totalBoard, int pageSize, int blockSize) {
-		pager.setPageNum(pageNum);
-		pager.setTotalBoard(totalBoard);
-		pager.setPageSize(pageSize);
-		pager.setBlockSize(blockSize);
-	}
-	public static void calcPageForDto(Pager pager, CommonListPagerRequestDto commonListPagerRequestDto) {
-		pager.calcPage();
-		commonListPagerRequestDto.setPageNum(pager.getPageNum());
-		commonListPagerRequestDto.setTotalBoard(pager.getTotalBoard());
-		commonListPagerRequestDto.setPageSize(pager.getPageSize());
-		commonListPagerRequestDto.setBlockSize(pager.getBlockSize());
-	}
-	public static void calcPageForDto(Pager pager, CommonListPagerRequestDto commonListPagerRequestDto, long totalRecordCount) {
+	//---
+	public static void calcPageForDto(CommonListPagerRequestDto commonListPagerRequestDto, long totalRecordCount) {
+		Pager pager = PagerUtil.getPager(
+			commonListPagerRequestDto.getPageNum(),
+			commonListPagerRequestDto.getTotalBoard(),
+			commonListPagerRequestDto.getPageSize(),
+			commonListPagerRequestDto.getBlockSize()
+		);
 		pager.setTotalBoard(totalRecordCount);
-		calcPageForDto(pager, commonListPagerRequestDto);
-	}
-	public static void calcPageForDao(Pager pager, CommonListPagerRequestDao commonListPagerRequestDao) {
 		pager.calcPage();
-		commonListPagerRequestDao.setPageNum(pager.getPageNum());
-		commonListPagerRequestDao.setTotalBoard(pager.getTotalBoard());
-		commonListPagerRequestDao.setPageSize(pager.getPageSize());
-		commonListPagerRequestDao.setBlockSize(pager.getBlockSize());
 	}
-	public static void calcPageForDao(Pager pager, CommonListPagerRequestDao commonListPagerRequestDao, long totalRecordCount) {
+	public static void calcPageForDao(CommonListPagerRequestDao commonListPagerRequestDao, long totalRecordCount) {
+		Pager pager = PagerUtil.getPager(
+			commonListPagerRequestDao.getPageNum(),
+			commonListPagerRequestDao.getTotalBoard(),
+			commonListPagerRequestDao.getPageSize(),
+			commonListPagerRequestDao.getBlockSize()
+		);
 		pager.setTotalBoard(totalRecordCount);
-		calcPageForDao(pager, commonListPagerRequestDao);
+		pager.calcPage();
 	}
 }

@@ -14,7 +14,7 @@ public class SiteDebugger {
 	private String debugAreaEndString;
 	//---
 	public SiteDebugger() {
-		this.debugAreaStartString = "============================== debug start \n";
+		this.debugAreaStartString = "\n\n============================== debug start \n";
 		this.debugAreaEndString = "============================== debug end \n";
 	}
 	public SiteDebugger(String debugAreaStartString, String debugAreaEndString) {
@@ -34,7 +34,20 @@ public class SiteDebugger {
 		returnValue = logString;
 		return returnValue;
 	}
-	public String getDebugSBodyString(String debugTitleString, String debugValueString) {
+	public String getDebugStartString(String debugTitleString, String debugSubTitleString) {
+		StringBuffer logBuffer = new StringBuffer();
+		String logString = "";
+		String returnValue = "";
+		//---
+		logBuffer.append(this.debugAreaStartString);
+		logBuffer.append("["+debugTitleString+" Debug String] \n");
+		logBuffer.append("- Debug Sub Title : "+debugSubTitleString+" \n");
+		logString = logBuffer.toString();
+		//---
+		returnValue = logString;
+		return returnValue;
+	}
+	public String getDebugBodyString(String debugTitleString, String debugValueString) {
 		StringBuffer logBuffer = new StringBuffer();
 		String logString = "";
 		String returnValue = "";
@@ -45,33 +58,7 @@ public class SiteDebugger {
 		returnValue = logString;
 		return returnValue;
 	}
-	public String getDebugSBodyString(String debugTitleString, Long debugValueNumber) {
-		StringBuffer logBuffer = new StringBuffer();
-		String logString = "";
-		String returnValue = "";
-		String debugValueString = "";
-		//---
-		debugValueString = String.valueOf(debugValueNumber);
-		logBuffer.append(debugTitleString+" : " + debugValueString + "\n");
-		logString = logBuffer.toString();
-		//---
-		returnValue = logString;
-		return returnValue;
-	}
-	public String getDebugSBodyString(String debugTitleString, Integer debugValueNumber) {
-		StringBuffer logBuffer = new StringBuffer();
-		String logString = "";
-		String returnValue = "";
-		String debugValueString = "";
-		//---
-		debugValueString = String.valueOf(debugValueNumber);
-		logBuffer.append(debugTitleString+" : " + debugValueString + "\n");
-		logString = logBuffer.toString();
-		//---
-		returnValue = logString;
-		return returnValue;
-	}
-	public String getDebugSBodyString(String debugTitleString, Float debugValueNumber) {
+	public String getDebugBodyString(String debugTitleString, Long debugValueNumber) {
 		StringBuffer logBuffer = new StringBuffer();
 		String logString = "";
 		String returnValue = "";
@@ -84,7 +71,33 @@ public class SiteDebugger {
 		returnValue = logString;
 		return returnValue;
 	}
-	public String getDebugSBodyString(String debugTitleString, Double debugValueNumber) {
+	public String getDebugBodyString(String debugTitleString, Integer debugValueNumber) {
+		StringBuffer logBuffer = new StringBuffer();
+		String logString = "";
+		String returnValue = "";
+		String debugValueString = "";
+		//---
+		debugValueString = String.valueOf(debugValueNumber);
+		logBuffer.append(debugTitleString+" : " + debugValueString + "\n");
+		logString = logBuffer.toString();
+		//---
+		returnValue = logString;
+		return returnValue;
+	}
+	public String getDebugBodyString(String debugTitleString, Float debugValueNumber) {
+		StringBuffer logBuffer = new StringBuffer();
+		String logString = "";
+		String returnValue = "";
+		String debugValueString = "";
+		//---
+		debugValueString = String.valueOf(debugValueNumber);
+		logBuffer.append(debugTitleString+" : " + debugValueString + "\n");
+		logString = logBuffer.toString();
+		//---
+		returnValue = logString;
+		return returnValue;
+	}
+	public String getDebugBodyString(String debugTitleString, Double debugValueNumber) {
 		StringBuffer logBuffer = new StringBuffer();
 		String logString = "";
 		String returnValue = "";
@@ -112,6 +125,11 @@ public class SiteDebugger {
 	public void appendDebugStartStringBuffer(StringBuffer logBuffer, String debugTitleString) {
 		logBuffer.append(this.debugAreaStartString);
 		logBuffer.append("["+debugTitleString+" Debug String] \n");
+	}
+	public void appendDebugStartStringBuffer(StringBuffer logBuffer, String debugTitleString, String debugSubTitleString) {
+		logBuffer.append(this.debugAreaStartString);
+		logBuffer.append("["+debugTitleString+" Debug String] \n");
+		logBuffer.append("- Debug Sub Title : "+debugSubTitleString+" \n");
 	}
 	public void appendDebugBodyStringBuffer(StringBuffer logBuffer, String debugTitleString, String debugValueString) {
 		logBuffer.append(debugTitleString+" : " + debugValueString + "\n");
@@ -147,6 +165,11 @@ public class SiteDebugger {
 	public void printDebugStartString(Logger log, String debugTitleString) {
 		log.debug(this.debugAreaStartString);
 		log.debug("["+debugTitleString+" Debug String] \n");
+	}
+	public void printDebugStartString(Logger log, String debugTitleString, String debugSubTitleString) {
+		log.debug(this.debugAreaStartString);
+		log.debug("["+debugTitleString+" Debug String] \n");
+		log.debug("- Debug Sub Title : "+debugSubTitleString+" \n");
 	}
 	public void printDebugBodyString(Logger log, String debugTitleString, String debugValueString) {
 		log.debug(debugTitleString+" : " + debugValueString + "\n");

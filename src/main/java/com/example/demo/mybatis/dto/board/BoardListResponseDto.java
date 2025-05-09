@@ -33,7 +33,7 @@ public class BoardListResponseDto {
 		return returnValue;
 	}
 	//---
-	public String getDebugLogString() {
+	public String getDebugLogString(String debugSubTitleString) {
 		String returnValue = "";
 		StringBuffer logStringBuffer = null;
 		String logString = "";
@@ -41,7 +41,7 @@ public class BoardListResponseDto {
 		//---
 		logStringBuffer = new StringBuffer();
 		siteDebugger = DebugUtil.getSiteDebugger();
-		siteDebugger.appendDebugStartStringBuffer(logStringBuffer, "BoardListResponseDto");
+		siteDebugger.appendDebugStartStringBuffer(logStringBuffer, "BoardListResponseDto", debugSubTitleString);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "bdSeq", this.bdSeq);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "bdTitle", this.bdTitle);
 		siteDebugger.appendDebugEndStringBuffer(logStringBuffer);

@@ -39,3 +39,9 @@ logging:
       audit: OFF
       resultset: OFF
       connection: OFF
+    org:
+      springframework: INFO
+    com:
+      example:
+        demo:
+          mybatis: DEBUG

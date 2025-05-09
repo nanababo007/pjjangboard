@@ -26,6 +26,13 @@ public class CommonListPagerRequestDto {
 	private long endPage;
 	private long prevPage;
 	private long nextPage;
+	//--- 생성자
+	public CommonListPagerRequestDto() {
+		if(this.pageNum==0) {this.pageNum = 1;}
+		if(this.totalBoard==0) {this.totalBoard = 0;}
+		if(this.pageSize==0) {this.pageSize = 10;}
+		if(this.blockSize==0) {this.blockSize = 10;}
+	}
 	//--- from/to 메서드 정의.
 	public void fromPagerRequestDao(CommonListPagerRequestDao commonListPagerRequestDao) {
 		this.pageNum = commonListPagerRequestDao.getPageNum();
@@ -57,7 +64,7 @@ public class CommonListPagerRequestDto {
 		returnValue.setNextPage(this.nextPage);
 		return returnValue;
 	}
-	public String getPagerDebugLogString() {
+	public String getPagerDebugLogString(String debugSubTitleString) {
 		String returnValue = "";
 		StringBuffer logStringBuffer = null;
 		String logString = "";
@@ -65,7 +72,7 @@ public class CommonListPagerRequestDto {
 		//---
 		logStringBuffer = new StringBuffer();
 		siteDebugger = DebugUtil.getSiteDebugger();
-		siteDebugger.appendDebugStartStringBuffer(logStringBuffer, "CommonListPagerRequestDto");
+		siteDebugger.appendDebugStartStringBuffer(logStringBuffer, "CommonListPagerRequestDto", debugSubTitleString);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "pageNum", this.pageNum);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "totalBoard", this.totalBoard);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "pageSize", this.pageSize);

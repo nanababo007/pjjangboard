@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @ToString
 public class BoardUpdateDeleteRequestDao {
 	//---
-	public String getDebugLogString() {
+	public String getDebugLogString(String debugSubTitleString) {
 		String returnValue = "";
 		StringBuffer logStringBuffer = null;
 		String logString = "";
@@ -22,7 +22,7 @@ public class BoardUpdateDeleteRequestDao {
 		//---
 		logStringBuffer = new StringBuffer();
 		siteDebugger = DebugUtil.getSiteDebugger();
-		siteDebugger.appendDebugStartStringBuffer(logStringBuffer, "BoardUpdateDeleteRequestDao");
+		siteDebugger.appendDebugStartStringBuffer(logStringBuffer, "BoardUpdateDeleteRequestDao", debugSubTitleString);
 		//siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "bdSeq", this.bdSeq);
 		siteDebugger.appendDebugEndStringBuffer(logStringBuffer);
 		logString = logStringBuffer.toString();

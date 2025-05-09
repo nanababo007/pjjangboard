@@ -26,7 +26,7 @@ public class CommonListPagerRequestDao {
 	private long prevPage;
 	private long nextPage;
 	//---
-	public String getPagerDebugLogString() {
+	public String getPagerDebugLogString(String debugSubTitleString) {
 		String returnValue = "";
 		StringBuffer logStringBuffer = null;
 		String logString = "";
@@ -34,7 +34,7 @@ public class CommonListPagerRequestDao {
 		//---
 		logStringBuffer = new StringBuffer();
 		siteDebugger = DebugUtil.getSiteDebugger();
-		siteDebugger.appendDebugStartStringBuffer(logStringBuffer, "CommonListPagerRequestDao");
+		siteDebugger.appendDebugStartStringBuffer(logStringBuffer, "CommonListPagerRequestDao", debugSubTitleString);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "pageNum", this.pageNum);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "totalBoard", this.totalBoard);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "pageSize", this.pageSize);

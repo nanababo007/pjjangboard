@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 public class BoardListRequestDao extends CommonListPagerRequestDao {
 	private long bdSeq;
 	//---
-	public String getDebugLogString() {
+	public String getDebugLogString(String debugSubTitleString) {
 		String returnValue = "";
 		StringBuffer logStringBuffer = null;
 		String logString = "";
@@ -24,12 +24,12 @@ public class BoardListRequestDao extends CommonListPagerRequestDao {
 		//---
 		logStringBuffer = new StringBuffer();
 		siteDebugger = DebugUtil.getSiteDebugger();
-		siteDebugger.appendDebugStartStringBuffer(logStringBuffer, "BoardListRequestDao");
+		siteDebugger.appendDebugStartStringBuffer(logStringBuffer, "BoardListRequestDao", debugSubTitleString);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "bdSeq", this.bdSeq);
 		siteDebugger.appendDebugEndStringBuffer(logStringBuffer);
 		logString = logStringBuffer.toString();
 		//---
-		super.getPagerDebugLogString();
+		super.getPagerDebugLogString(debugSubTitleString);
 		log.debug(logStringBuffer.toString());
 		returnValue = logString;
 		return returnValue;

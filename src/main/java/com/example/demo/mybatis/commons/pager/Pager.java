@@ -17,11 +17,11 @@ import lombok.extern.slf4j.Slf4j;
 public class Pager {
 	//--- ### 변수 선언 영역.
 	// 페이지의 번호
-	private long pageNum = 1;
+	private long pageNum = 0;
 	// 게시글의 개수
 	private long totalBoard = 0;
 	// 페이지에 출력되는 게시글 개수 (n개씩 보기)
-	private long pageSize = 10;
+	private long pageSize = 0;
 	// 한 블럭에 출력되는 페이지 번호 개수
 	private long blockSize = 10;
 	//---
@@ -40,26 +40,19 @@ public class Pager {
 	// 다음 블럭에 출력되는 시작 페이지 번호
 	private long nextPage;
 	//--- ### 생성자 선언 영역.
-	public Pager() {}
+	public Pager() {
+		this.setPager(1, 0, 10, 10);
+	}
 	public Pager(long pageNum, long totalBoard, long pageSize, long blockSize) {
-		SiteDebugger siteDebugger = null;
-		//---
-		this.pageNum = pageNum;
-		this.totalBoard = totalBoard;
-		this.pageSize = pageSize;
-		this.blockSize = blockSize;
-		//---
-		siteDebugger = DebugUtil.getSiteDebugger();
-		siteDebugger.printDebugStartString(log, "Pager");
-		siteDebugger.printDebugBodyString(log, "pageNum", this.pageNum);
-		siteDebugger.printDebugBodyString(log, "totalBoard", this.totalBoard);
-		siteDebugger.printDebugBodyString(log, "pageSize", this.pageSize);
-		siteDebugger.printDebugBodyString(log, "blockSize", this.blockSize);
-		siteDebugger.printDebugEndString(log);
-		//---
-		calcPage();
+		this.setPager(pageNum, totalBoard, pageSize, blockSize);
 	}
 	//--- ### 메서드 선언 영역.
+	public void setPager(long pageNum, long totalBoard, long pageSize, long blockSize) {
+		this.setPageNum(pageNum);
+		this.setTotalBoard(totalBoard);
+		this.setPageSize(pageSize);
+		this.setBlockSize(blockSize);
+	}
 	public void calcPage() {
 		// 총 게시물 수에 페이지당 표시되는 게시물 수를 나눠 전체 페이지의 개수를 구합니다.
 		totalPage=(long)Math.ceil((double)totalBoard/pageSize);
@@ -82,5 +75,32 @@ public class Pager {
 		// 이전 및 다음 블럭의 시작 페이지 번호 계산
 		prevPage=startPage-blockSize;
 		nextPage=startPage+blockSize;
+	}
+	public String getPagerDebugLogString(String debugSubTitleString) {
+		String returnValue = "";
+		StringBuffer logStringBuffer = null;
+		String logString = "";
+		SiteDebugger siteDebugger = null;
+		//---
+		logStringBuffer = new StringBuffer();
+		siteDebugger = DebugUtil.getSiteDebugger();
+		siteDebugger.appendDebugStartStringBuffer(logStringBuffer, "Pager", debugSubTitleString);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "pageNum", this.pageNum);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "totalBoard", this.totalBoard);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "pageSize", this.pageSize);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "blockSize", this.blockSize);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "totalPage", this.totalPage);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "startRow", this.startRow);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "endRow", this.endRow);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "startPage", this.startPage);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "endPage", this.endPage);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "prevPage", this.prevPage);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "nextPage", this.nextPage);
+		siteDebugger.appendDebugEndStringBuffer(logStringBuffer);
+		logString = logStringBuffer.toString();
+		//---
+		log.debug(logStringBuffer.toString());
+		returnValue = logString;
+		return returnValue;
 	}
 }
