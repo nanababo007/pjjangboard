@@ -2,10 +2,14 @@ package com.example.demo.mybatis.commons.pager;
 
 import org.springframework.stereotype.Component;
 
+import com.example.demo.mybatis.util.DebugUtil;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Component
 @Getter
 @Setter
@@ -42,6 +46,10 @@ public class Pager {
 		this.totalBoard = totalBoard;
 		this.pageSize = pageSize;
 		this.blockSize = blockSize;
+		//---
+		DebugUtil.printDebugStartString(log, "Pager");
+		DebugUtil.printDebugBodyString(log, "pageNum", this.pageNum);
+		DebugUtil.printDebugEndString(log);
 		//---
 		calcPage();
 	}

@@ -3,6 +3,7 @@ package com.example.demo.mybatis.dto.board;
 import com.example.demo.mybatis.dao.board.BoardListRequestDao;
 import com.example.demo.mybatis.dto.common.CommonListPagerRequestDto;
 import com.example.demo.mybatis.dto.common.CommonListPagerRequestDtoUtil;
+import com.example.demo.mybatis.util.DebugUtil;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -35,10 +36,9 @@ public class BoardListRequestDto extends CommonListPagerRequestDto {
 		String logString = "";
 		//---
 		logStringBuffer = new StringBuffer();
-		logStringBuffer.append("============================== debug start \n");
-		logStringBuffer.append("[BoardListRequestDto debug string] \n");
-		logStringBuffer.append("bdSeq : " + this.bdSeq+"\n");
-		logStringBuffer.append("============================== debug end \n");
+		DebugUtil.appendDebugStartStringBuffer(logStringBuffer, "BoardListRequestDto");
+		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "bdSeq", this.bdSeq);
+		DebugUtil.appendDebugEndStringBuffer(logStringBuffer);
 		logString = logStringBuffer.toString();
 		//---
 		super.getPagerDebugLogString();

@@ -1,6 +1,7 @@
 package com.example.demo.mybatis.dto.common;
 
 import com.example.demo.mybatis.dao.common.CommonListPagerRequestDao;
+import com.example.demo.mybatis.util.DebugUtil;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -61,20 +62,19 @@ public class CommonListPagerRequestDto {
 		String logString = "";
 		//---
 		logStringBuffer = new StringBuffer();
-		logStringBuffer.append("============================== debug start \n");
-		logStringBuffer.append("[CommonListPagerRequestDto debug string] \n");
-		logStringBuffer.append("pageNum : " + this.pageNum+"\n");
-		logStringBuffer.append("totalBoard : " + this.totalBoard+"\n");
-		logStringBuffer.append("pageSize : " + this.pageSize+"\n");
-		logStringBuffer.append("blockSize : " + this.blockSize+"\n");
-		logStringBuffer.append("totalPage : " + this.totalPage+"\n");
-		logStringBuffer.append("startRow : " + this.startRow+"\n");
-		logStringBuffer.append("endRow : " + this.endRow+"\n");
-		logStringBuffer.append("startPage : " + this.startPage+"\n");
-		logStringBuffer.append("endPage : " + this.endPage+"\n");
-		logStringBuffer.append("prevPage : " + this.prevPage+"\n");
-		logStringBuffer.append("nextPage : " + this.nextPage+"\n");
-		logStringBuffer.append("============================== debug end \n");
+		DebugUtil.appendDebugStartStringBuffer(logStringBuffer, "CommonListPagerRequestDto");
+		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "pageNum", this.pageNum);
+		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "totalBoard", this.totalBoard);
+		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "pageSize", this.pageSize);
+		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "blockSize", this.blockSize);
+		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "totalPage", this.totalPage);
+		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "startRow", this.startRow);
+		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "endRow", this.endRow);
+		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "startPage", this.startPage);
+		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "endPage", this.endPage);
+		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "prevPage", this.prevPage);
+		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "nextPage", this.nextPage);
+		DebugUtil.appendDebugEndStringBuffer(logStringBuffer);
 		logString = logStringBuffer.toString();
 		//---
 		log.debug(logString);

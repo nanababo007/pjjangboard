@@ -1,6 +1,7 @@
 package com.example.demo.mybatis.dto.board;
 
 import com.example.demo.mybatis.dao.board.BoardListResponseDao;
+import com.example.demo.mybatis.util.DebugUtil;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -37,11 +38,10 @@ public class BoardListResponseDto {
 		String logString = "";
 		//---
 		logStringBuffer = new StringBuffer();
-		logStringBuffer.append("============================== debug start \n");
-		logStringBuffer.append("[BoardListResponseDto debug string] \n");
-		logStringBuffer.append("bdSeq : " + this.bdSeq+"\n");
-		logStringBuffer.append("bdTitle : " + this.bdTitle+"\n");
-		logStringBuffer.append("============================== debug end \n");
+		DebugUtil.appendDebugStartStringBuffer(logStringBuffer, "BoardListResponseDto");
+		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "bdSeq", this.bdSeq);
+		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "bdTitle", this.bdTitle);
+		DebugUtil.appendDebugEndStringBuffer(logStringBuffer);
 		logString = logStringBuffer.toString();
 		//---
 		log.debug(logStringBuffer.toString());

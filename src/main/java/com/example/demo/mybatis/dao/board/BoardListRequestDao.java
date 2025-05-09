@@ -1,6 +1,7 @@
 package com.example.demo.mybatis.dao.board;
 
 import com.example.demo.mybatis.dao.common.CommonListPagerRequestDao;
+import com.example.demo.mybatis.util.DebugUtil;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,10 +21,9 @@ public class BoardListRequestDao extends CommonListPagerRequestDao {
 		String logString = "";
 		//---
 		logStringBuffer = new StringBuffer();
-		logStringBuffer.append("============================== debug start \n");
-		logStringBuffer.append("[BoardListRequestDao debug string] \n");
-		logStringBuffer.append("bdSeq : " + this.bdSeq+"\n");
-		logStringBuffer.append("============================== debug end \n");
+		DebugUtil.appendDebugStartStringBuffer(logStringBuffer, "BoardListRequestDao");
+		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "bdSeq", this.bdSeq);
+		DebugUtil.appendDebugEndStringBuffer(logStringBuffer);
 		logString = logStringBuffer.toString();
 		//---
 		super.getPagerDebugLogString();
