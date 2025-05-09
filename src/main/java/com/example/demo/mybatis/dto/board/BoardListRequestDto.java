@@ -1,5 +1,6 @@
 package com.example.demo.mybatis.dto.board;
 
+import com.example.demo.mybatis.commons.pager.SiteDebugger;
 import com.example.demo.mybatis.dao.board.BoardListRequestDao;
 import com.example.demo.mybatis.dto.common.CommonListPagerRequestDto;
 import com.example.demo.mybatis.dto.common.CommonListPagerRequestDtoUtil;
@@ -34,11 +35,13 @@ public class BoardListRequestDto extends CommonListPagerRequestDto {
 		String returnValue = "";
 		StringBuffer logStringBuffer = null;
 		String logString = "";
+		SiteDebugger siteDebugger = null;
 		//---
 		logStringBuffer = new StringBuffer();
-		DebugUtil.appendDebugStartStringBuffer(logStringBuffer, "BoardListRequestDto");
-		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "bdSeq", this.bdSeq);
-		DebugUtil.appendDebugEndStringBuffer(logStringBuffer);
+		siteDebugger = DebugUtil.getSiteDebugger();
+		siteDebugger.appendDebugStartStringBuffer(logStringBuffer, "BoardListRequestDto");
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "bdSeq", this.bdSeq);
+		siteDebugger.appendDebugEndStringBuffer(logStringBuffer);
 		logString = logStringBuffer.toString();
 		//---
 		super.getPagerDebugLogString();

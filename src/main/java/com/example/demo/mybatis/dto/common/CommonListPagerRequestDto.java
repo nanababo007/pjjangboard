@@ -1,5 +1,6 @@
 package com.example.demo.mybatis.dto.common;
 
+import com.example.demo.mybatis.commons.pager.SiteDebugger;
 import com.example.demo.mybatis.dao.common.CommonListPagerRequestDao;
 import com.example.demo.mybatis.util.DebugUtil;
 
@@ -60,21 +61,23 @@ public class CommonListPagerRequestDto {
 		String returnValue = "";
 		StringBuffer logStringBuffer = null;
 		String logString = "";
+		SiteDebugger siteDebugger = null;
 		//---
 		logStringBuffer = new StringBuffer();
-		DebugUtil.appendDebugStartStringBuffer(logStringBuffer, "CommonListPagerRequestDto");
-		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "pageNum", this.pageNum);
-		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "totalBoard", this.totalBoard);
-		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "pageSize", this.pageSize);
-		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "blockSize", this.blockSize);
-		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "totalPage", this.totalPage);
-		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "startRow", this.startRow);
-		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "endRow", this.endRow);
-		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "startPage", this.startPage);
-		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "endPage", this.endPage);
-		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "prevPage", this.prevPage);
-		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "nextPage", this.nextPage);
-		DebugUtil.appendDebugEndStringBuffer(logStringBuffer);
+		siteDebugger = DebugUtil.getSiteDebugger();
+		siteDebugger.appendDebugStartStringBuffer(logStringBuffer, "CommonListPagerRequestDto");
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "pageNum", this.pageNum);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "totalBoard", this.totalBoard);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "pageSize", this.pageSize);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "blockSize", this.blockSize);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "totalPage", this.totalPage);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "startRow", this.startRow);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "endRow", this.endRow);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "startPage", this.startPage);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "endPage", this.endPage);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "prevPage", this.prevPage);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "nextPage", this.nextPage);
+		siteDebugger.appendDebugEndStringBuffer(logStringBuffer);
 		logString = logStringBuffer.toString();
 		//---
 		log.debug(logString);

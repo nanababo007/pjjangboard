@@ -1,5 +1,6 @@
 package com.example.demo.mybatis.dto.board;
 
+import com.example.demo.mybatis.commons.pager.SiteDebugger;
 import com.example.demo.mybatis.dao.board.BoardListResponseDao;
 import com.example.demo.mybatis.util.DebugUtil;
 
@@ -36,12 +37,14 @@ public class BoardListResponseDto {
 		String returnValue = "";
 		StringBuffer logStringBuffer = null;
 		String logString = "";
+		SiteDebugger siteDebugger = null;
 		//---
 		logStringBuffer = new StringBuffer();
-		DebugUtil.appendDebugStartStringBuffer(logStringBuffer, "BoardListResponseDto");
-		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "bdSeq", this.bdSeq);
-		DebugUtil.appendDebugBodyStringBuffer(logStringBuffer, "bdTitle", this.bdTitle);
-		DebugUtil.appendDebugEndStringBuffer(logStringBuffer);
+		siteDebugger = DebugUtil.getSiteDebugger();
+		siteDebugger.appendDebugStartStringBuffer(logStringBuffer, "BoardListResponseDto");
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "bdSeq", this.bdSeq);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "bdTitle", this.bdTitle);
+		siteDebugger.appendDebugEndStringBuffer(logStringBuffer);
 		logString = logStringBuffer.toString();
 		//---
 		log.debug(logStringBuffer.toString());

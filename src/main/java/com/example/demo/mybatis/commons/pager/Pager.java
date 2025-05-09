@@ -42,14 +42,20 @@ public class Pager {
 	//--- ### 생성자 선언 영역.
 	public Pager() {}
 	public Pager(long pageNum, long totalBoard, long pageSize, long blockSize) {
+		SiteDebugger siteDebugger = null;
+		//---
 		this.pageNum = pageNum;
 		this.totalBoard = totalBoard;
 		this.pageSize = pageSize;
 		this.blockSize = blockSize;
 		//---
-		DebugUtil.printDebugStartString(log, "Pager");
-		DebugUtil.printDebugBodyString(log, "pageNum", this.pageNum);
-		DebugUtil.printDebugEndString(log);
+		siteDebugger = DebugUtil.getSiteDebugger();
+		siteDebugger.printDebugStartString(log, "Pager");
+		siteDebugger.printDebugBodyString(log, "pageNum", this.pageNum);
+		siteDebugger.printDebugBodyString(log, "totalBoard", this.totalBoard);
+		siteDebugger.printDebugBodyString(log, "pageSize", this.pageSize);
+		siteDebugger.printDebugBodyString(log, "blockSize", this.blockSize);
+		siteDebugger.printDebugEndString(log);
 		//---
 		calcPage();
 	}
