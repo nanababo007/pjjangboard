@@ -19,9 +19,7 @@ import com.example.demo.mybatis.service.BoardService;
 import com.example.demo.mybatis.util.PagerUtil;
 
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @AllArgsConstructor
 @RestController
 @RequestMapping(value = "/board")
