@@ -38,4 +38,31 @@ public class DebugUtil {
 		siteDebugger.printDebugBodyString(log, debugNameString, debugValueNumber);
 		siteDebugger.printDebugEndString(log);
 	}
+	public static void printDebugString(Logger log, String debugNameString, Long debugValueNumber) {
+		SiteDebugger siteDebugger = getSiteDebugger();
+		String debugTitleString = null;
+		//---
+		debugTitleString = String.valueOf(CommonUtil.GetRandomLongNumber());
+		siteDebugger.printDebugStartString(log, debugTitleString);
+		siteDebugger.printDebugBodyString(log, debugNameString, debugValueNumber);
+		siteDebugger.printDebugEndString(log);
+	}
+	public static void printDebugString(Logger log, String debugNameString, Integer debugValueNumber) {
+		SiteDebugger siteDebugger = getSiteDebugger();
+		String debugTitleString = null;
+		//---
+		debugTitleString = String.valueOf(CommonUtil.GetRandomLongNumber());
+		siteDebugger.printDebugStartString(log, debugTitleString);
+		siteDebugger.printDebugBodyString(log, debugNameString, debugValueNumber);
+		siteDebugger.printDebugEndString(log);
+	}
+	public static void printDebugString(Logger log, String debugNameString, String debugValueString) {
+		SiteDebugger siteDebugger = getSiteDebugger();
+		String debugTitleString = null;
+		//---
+		debugTitleString = String.valueOf(CommonUtil.GetRandomLongNumber());
+		siteDebugger.printDebugStartString(log, debugTitleString);
+		siteDebugger.printDebugBodyString(log, debugNameString, debugValueString);
+		siteDebugger.printDebugEndString(log);
+	}
 }

@@ -1,5 +1,17 @@
-{"properties": [{
-  "name": "mybatis.type-aliases-packages",
-  "type": "java.lang.String",
-  "description": "A description for 'mybatis.type-aliases-packages'"
-}]}
+{"properties": [
+  {
+    "name": "mybatis.type-aliases-packages",
+    "type": "java.lang.String",
+    "description": "A description for 'mybatis.type-aliases-packages'"
+  },
+  {
+    "name": "pager.page-size",
+    "type": "java.lang.String",
+    "description": "A description for 'pager.page-size'"
+  },
+  {
+    "name": "pager.block-size",
+    "type": "java.lang.String",
+    "description": "A description for 'pager.block-size'"
+  }
+]}

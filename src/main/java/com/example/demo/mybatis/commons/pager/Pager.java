@@ -41,7 +41,12 @@ public class Pager {
 	private long nextPage;
 	//--- ### 생성자 선언 영역.
 	public Pager() {
-		this.setPager(1, 0, 10, 10);
+		long defaultPageSize = 0;
+		long defaultBlockSize = 0;
+		//---
+		defaultPageSize = 10;
+		defaultBlockSize = 10;
+		this.setPager(1, 0, defaultPageSize, defaultBlockSize);
 	}
 	public Pager(long pageNum, long totalBoard, long pageSize, long blockSize) {
 		this.setPager(pageNum, totalBoard, pageSize, blockSize);

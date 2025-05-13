@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.mybatis.commons.pager.Pager;
 import com.example.demo.mybatis.dao.board.BoardListRequestDao;
 import com.example.demo.mybatis.dao.board.BoardListResponseDao;
 import com.example.demo.mybatis.dto.board.BoardListRequestDto;
@@ -25,6 +26,7 @@ import lombok.AllArgsConstructor;
 @RequestMapping(value = "/board")
 public class BoardController {
 	private BoardService boardService;
+	private Pager pager;
 	@GetMapping("/list")
 	public ResponseEntity<Map<String,Object>> getBoardList(BoardListRequestDto boardListRequestDto) throws Exception {
 		Map<String,Object> responseData = new HashMap<String,Object>();
@@ -36,7 +38,7 @@ public class BoardController {
 		//--- 본문 코드 영역.
 		boardListRequestDao = boardListRequestDto.toRequestDao();
 		boardListTotalCount = boardService.getBoardListTotalCount(boardListRequestDao);
-		PagerUtil.calcPageForDao(boardListRequestDao,boardListTotalCount);
+		PagerUtil.calcPageForDao(pager,boardListRequestDao,boardListTotalCount);
 		boardListResponseDao = boardService.getBoardList(boardListRequestDao);
 		boardListResponseDto = BoardListResponseDtoUtil.getResponseDtoListFromResponseDaoList(boardListResponseDao);
 		responseData.put("boardListResponseDto", boardListResponseDto);

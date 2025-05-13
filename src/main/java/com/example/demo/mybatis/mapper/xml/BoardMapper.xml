@@ -8,6 +8,8 @@
 			a.bd_seq as bdSeq
 			,a.bd_title as bdTitle
 		<include refid="sqlGetBoardListFromQuery"></include>
+		ORDER BY
+			a.created_time desc
 		<include refid="com.example.demo.mybatis.mapper.CommonMapper.sqlPagerConditionQuery"></include>
 	</select>
 
@@ -18,18 +20,18 @@
 		<include refid="sqlGetBoardListFromQuery"></include>
 	</select>
 
-	<sql id="sqlGetBoardListFromQuery">
-		FROM tb_board_info a
-		where 1=1
-	</sql>
-
 	<select id="getBoardAllList" parameterType="BoardListRequestDao" resultType="BoardListResponseDao">
 		/* BoardMapper.getBoardAllList */
 		SELECT
 			a.bd_seq as bdSeq
 			,a.bd_title as bdTitle
-		FROM tb_board_info a
+		<include refid="sqlGetBoardListFromQuery"></include>
 	</select>
+
+	<sql id="sqlGetBoardListFromQuery">
+		FROM tb_board_info a
+		where 1=1
+	</sql>
 
 	<insert id="insertBoard" parameterType="BoardInsertRequestDao">
 		/* BoardMapper.insertBoard */

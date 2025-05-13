@@ -15,7 +15,7 @@ public class SiteDebugger {
 	//---
 	public SiteDebugger() {
 		this.debugAreaStartString = "\n\n============================== debug start \n";
-		this.debugAreaEndString = "============================== debug end \n";
+		this.debugAreaEndString = "\n\n============================== debug end \n";
 	}
 	public SiteDebugger(String debugAreaStartString, String debugAreaEndString) {
 		this.debugAreaStartString = debugAreaStartString;

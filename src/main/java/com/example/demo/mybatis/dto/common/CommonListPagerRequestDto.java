@@ -1,5 +1,7 @@
 package com.example.demo.mybatis.dto.common;
 
+import org.springframework.stereotype.Component;
+
 import com.example.demo.mybatis.commons.pager.SiteDebugger;
 import com.example.demo.mybatis.dao.common.CommonListPagerRequestDao;
 import com.example.demo.mybatis.util.DebugUtil;
@@ -10,6 +12,7 @@ import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@Component
 @Getter
 @Setter
 @ToString
@@ -28,10 +31,15 @@ public class CommonListPagerRequestDto {
 	private long nextPage;
 	//--- 생성자
 	public CommonListPagerRequestDto() {
+		long defaultPageSize = 0;
+		long defaultBlockSize = 0;
+		//---
+		defaultPageSize = 10;
+		defaultBlockSize = 10;
 		if(this.pageNum==0) {this.pageNum = 1;}
 		if(this.totalBoard==0) {this.totalBoard = 0;}
-		if(this.pageSize==0) {this.pageSize = 10;}
-		if(this.blockSize==0) {this.blockSize = 10;}
+		if(this.pageSize==0) {this.pageSize = defaultPageSize;}
+		if(this.blockSize==0) {this.blockSize = defaultBlockSize;}
 	}
 	//--- from/to 메서드 정의.
 	public void fromPagerRequestDao(CommonListPagerRequestDao commonListPagerRequestDao) {

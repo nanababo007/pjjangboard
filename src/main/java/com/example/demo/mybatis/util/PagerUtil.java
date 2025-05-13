@@ -5,32 +5,21 @@ import com.example.demo.mybatis.dao.common.CommonListPagerRequestDao;
 import com.example.demo.mybatis.dto.common.CommonListPagerRequestDto;
 
 public class PagerUtil {
-	public static Pager getPager() {
-		return new Pager();
-	}
-	public static Pager getPager(long pageNum, long totalBoard, long pageSize, long blockSize) {
-		return new Pager(pageNum, totalBoard, pageSize, blockSize);
-	}
-	//---
-	public static void calcPageForDto(CommonListPagerRequestDto commonListPagerRequestDto, long totalRecordCount) {
-		Pager pager = PagerUtil.getPager(
-			commonListPagerRequestDto.getPageNum(),
-			commonListPagerRequestDto.getTotalBoard(),
-			commonListPagerRequestDto.getPageSize(),
-			commonListPagerRequestDto.getBlockSize()
-		);
+	public static void calcPageForDto(Pager pager, CommonListPagerRequestDto commonListPagerRequestDto, long totalRecordCount) {
+		pager.setPageNum(commonListPagerRequestDto.getPageNum());
+		pager.setTotalBoard(commonListPagerRequestDto.getTotalBoard());
+		pager.setPageSize(commonListPagerRequestDto.getPageSize());
+		pager.setBlockSize(commonListPagerRequestDto.getBlockSize());
 		commonListPagerRequestDto.setTotalBoard(totalRecordCount);
 		pager.setTotalBoard(totalRecordCount);
 		pager.calcPage();
 		copyPagerToDto(pager, commonListPagerRequestDto);
 	}
-	public static void calcPageForDao(CommonListPagerRequestDao commonListPagerRequestDao, long totalRecordCount) {
-		Pager pager = PagerUtil.getPager(
-			commonListPagerRequestDao.getPageNum(),
-			commonListPagerRequestDao.getTotalBoard(),
-			commonListPagerRequestDao.getPageSize(),
-			commonListPagerRequestDao.getBlockSize()
-		);
+	public static void calcPageForDao(Pager pager, CommonListPagerRequestDao commonListPagerRequestDao, long totalRecordCount) {
+		pager.setPageNum(commonListPagerRequestDao.getPageNum());
+		pager.setTotalBoard(commonListPagerRequestDao.getTotalBoard());
+		pager.setPageSize(commonListPagerRequestDao.getPageSize());
+		pager.setBlockSize(commonListPagerRequestDao.getBlockSize());
 		commonListPagerRequestDao.setTotalBoard(totalRecordCount);
 		pager.setTotalBoard(totalRecordCount);
 		pager.calcPage();
