@@ -1,4 +1,4 @@
-package com.example.demo.mybatis.controller;
+package com.example.demo.mybatis.controller.api;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,8 +23,8 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping(value = "/board")
-public class BoardController {
+@RequestMapping(value = "/api/board")
+public class BoardApiController {
 	private BoardService boardService;
 	private Pager pager;
 	@GetMapping("/list")

@@ -27,6 +27,10 @@ spring:
     user:
       name: admin
       password: 1234
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
 mybatis:
   mapper-locations: classpath:/com/example/demo/mybatis/mapper/xml/*.xml
   type-aliases-packages: com.example.demo.mybatis.dao,com.example.demo.mybatis.dto
