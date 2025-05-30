@@ -29,6 +29,7 @@ public class CommonListPagerRequestDto {
 	private long endPage;
 	private long prevPage;
 	private long nextPage;
+	private long limitOffset;
 	//--- 생성자
 	public CommonListPagerRequestDto() {
 		long defaultPageSize = 0;
@@ -55,6 +56,7 @@ public class CommonListPagerRequestDto {
 		this.endPage = commonListPagerRequestDao.getEndPage();
 		this.prevPage = commonListPagerRequestDao.getPrevPage();
 		this.nextPage = commonListPagerRequestDao.getNextPage();
+		this.limitOffset = commonListPagerRequestDao.getLimitOffset();
 	}
 	public CommonListPagerRequestDao toPagerRequestDao() {
 		CommonListPagerRequestDao returnValue = new CommonListPagerRequestDao();
@@ -92,6 +94,7 @@ public class CommonListPagerRequestDto {
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "endPage", this.endPage);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "prevPage", this.prevPage);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "nextPage", this.nextPage);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "limitOffset", this.limitOffset);
 		siteDebugger.appendDebugEndStringBuffer(logStringBuffer);
 		logString = logStringBuffer.toString();
 		//---

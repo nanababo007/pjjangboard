@@ -25,6 +25,7 @@ public class CommonListPagerRequestDao {
 	private long endPage;
 	private long prevPage;
 	private long nextPage;
+	private long limitOffset;
 	//---
 	public String getPagerDebugLogString(String debugSubTitleString) {
 		String returnValue = "";
@@ -46,6 +47,7 @@ public class CommonListPagerRequestDao {
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "endPage", this.endPage);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "prevPage", this.prevPage);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "nextPage", this.nextPage);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "limitOffset", this.limitOffset);
 		siteDebugger.appendDebugEndStringBuffer(logStringBuffer);
 		logString = logStringBuffer.toString();
 		//---

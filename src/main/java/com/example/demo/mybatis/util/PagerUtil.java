@@ -37,6 +37,7 @@ public class PagerUtil {
 		commonListPagerRequestDao.setEndPage(pager.getEndPage());
 		commonListPagerRequestDao.setPrevPage(pager.getPrevPage());
 		commonListPagerRequestDao.setNextPage(pager.getNextPage());
+		commonListPagerRequestDao.setLimitOffset(pager.getLimitOffset());
 	}
 	public static void copyPagerToDto(Pager pager, CommonListPagerRequestDto commonListPagerRequestDto) {
 		commonListPagerRequestDto.setPageNum(pager.getPageNum());
@@ -50,5 +51,6 @@ public class PagerUtil {
 		commonListPagerRequestDto.setEndPage(pager.getEndPage());
 		commonListPagerRequestDto.setPrevPage(pager.getPrevPage());
 		commonListPagerRequestDto.setNextPage(pager.getNextPage());
+		commonListPagerRequestDto.setLimitOffset(pager.getLimitOffset());
 	}
 }

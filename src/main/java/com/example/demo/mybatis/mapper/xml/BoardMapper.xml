@@ -9,7 +9,7 @@
 			,a.bd_title as bdTitle
 		<include refid="sqlGetBoardListFromQuery"></include>
 		ORDER BY
-			a.created_time desc
+			a.bd_title desc
 		<include refid="com.example.demo.mybatis.mapper.CommonMapper.sqlPagerConditionQuery"></include>
 	</select>
 
@@ -26,6 +26,7 @@
 			a.bd_seq as bdSeq
 			,a.bd_title as bdTitle
 		<include refid="sqlGetBoardListFromQuery"></include>
+		limit 10000
 	</select>
 
 	<sql id="sqlGetBoardListFromQuery">

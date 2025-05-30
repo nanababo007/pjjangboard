@@ -9,8 +9,11 @@
 <body>
 	<h2>Hello! ${name}</h2>
 	<div>JSP List Test</div>
-	<c:forEach var="boardItemString" items="${boardList}" varStatus="boardIndexObject">
-	${boardIndexObject.index}, ${boardItemString} <br />
+	<c:forEach var="boardItemObject" items="${boardList}" varStatus="boardIndexObject">
+	${boardIndexObject.index+1}, ${boardItemObject.bdSeq}, ${boardItemObject.bdTitle} <br />
 	</c:forEach>
+	<p>
+		pager information : ${pager}
+	</p>
 </body>
 </html>

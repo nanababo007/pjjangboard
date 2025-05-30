@@ -46,7 +46,7 @@ public class BoardApiController {
 		returnValue = new ResponseEntity<>(responseData,HttpStatus.OK);
 		return returnValue;
 	}
-	@GetMapping("/all/list")
+	@GetMapping("/list/all")
 	public ResponseEntity<List<BoardListResponseDto>> getBoardAllList(BoardListRequestDto boardListRequestDto) throws Exception {
 		BoardListRequestDao boardListRequestDao = null;
 		List<BoardListResponseDao> boardListResponseDao = null;

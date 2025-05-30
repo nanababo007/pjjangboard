@@ -39,6 +39,8 @@ public class Pager {
 	private long prevPage;
 	// 다음 블럭에 출력되는 시작 페이지 번호
 	private long nextPage;
+	//mysql limit offset 값
+	private long limitOffset;
 	//--- ### 생성자 선언 영역.
 	public Pager() {
 		long defaultPageSize = 0;
@@ -71,6 +73,7 @@ public class Pager {
 		if(endRow>totalBoard) {
 			endRow=totalBoard;
 		}
+		limitOffset=startRow-1;
 		// 한 블럭에 출력되는 행 개수를 기준으로 페이지 번호를 계산
 		startPage=(pageNum-1)/blockSize*blockSize+1;
 		endPage=startPage+blockSize-1;
@@ -101,6 +104,7 @@ public class Pager {
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "endPage", this.endPage);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "prevPage", this.prevPage);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "nextPage", this.nextPage);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "limitOffset", this.limitOffset);
 		siteDebugger.appendDebugEndStringBuffer(logStringBuffer);
 		logString = logStringBuffer.toString();
 		//---
