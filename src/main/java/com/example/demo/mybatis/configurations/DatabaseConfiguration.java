@@ -10,13 +10,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 @MapperScan(basePackages={"com.example.demo.mybatis.mapper"},sqlSessionFactoryRef="sqlSessionFactory",sqlSessionTemplateRef="sqlSessionTemplate")
@@ -27,9 +23,9 @@ public class DatabaseConfiguration {
 	@Value("${mybatis.type-aliases-packages}")
 	String typeAliasesPackages;
 
-	@Bean
-	@ConfigurationProperties(prefix = "spring.datasource.hikari")
-	HikariConfig hikariConfig() {
+    /*Bean
+    @ConfigurationProperties(prefix = "spring.datasource.hikari")
+    HikariConfig hikariConfig() {
 		return new HikariConfig();
 	}
 
@@ -37,7 +33,7 @@ public class DatabaseConfiguration {
 	DataSource dataSource() {
 		DataSource dataSource = new HikariDataSource(hikariConfig());
 		return dataSource;
-	}
+	}*/
 
 	@Bean(name = "sqlSessionFactory")
 	SqlSessionFactory SqlSessionFactory(@Qualifier("dataSource") DataSource DataSource, ApplicationContext applicationContext) throws Exception {

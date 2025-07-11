@@ -4,12 +4,20 @@ spring:
   application:
     name: demo-mybatis
   datasource:
-    #url: jdbc:mysql://localhost:3306/squareaffixcms?&serverTimezone=UTC&autoReconnect=true&allowMultiQueries=true&characterEncoding=UTF-8
-    #driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:log4jdbc:mysql://localhost:3306/squareaffixcms?&serverTimezone=UTC&autoReconnect=true&allowMultiQueries=true&characterEncoding=UTF-8
-    driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    username: squareaffixcms
-    password: 19990326
+    hikari:
+      #jdbc-url: jdbc:mysql://localhost:3306/squareaffixcms?&serverTimezone=UTC&autoReconnect=true&allowMultiQueries=true&characterEncoding=UTF-8
+      #driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:log4jdbc:mysql://localhost:3306/squareaffixcms?&serverTimezone=UTC&autoReconnect=true&allowMultiQueries=true&characterEncoding=UTF-8
+      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+      username: squareaffixcms
+      password: 19990326
+      maximum-pool-size: 50
+      minimum-idle: 50
+      connection-timeout: 5000
+      connection-init-sql: SELECT 1
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      auto-commit: true
   devtools:
     livereload:
       enabled: false
