@@ -2,6 +2,7 @@ package com.example.demo.mybatis.commons.pager;
 
 import org.springframework.stereotype.Component;
 
+import com.example.demo.mybatis.configurations.WebsiteConfiguration;
 import com.example.demo.mybatis.util.DebugUtil;
 
 import lombok.Getter;
@@ -41,55 +42,55 @@ public class Pager {
 	private long nextPage;
 	//mysql limit offset 값
 	private long limitOffset;
+	String pageMoveUrl;
+	String pageMoveFuncName;
 	//--- ### 생성자 선언 영역.
 	public Pager() {
 		long defaultPageSize = 0;
 		long defaultBlockSize = 0;
 		//---
-		defaultPageSize = 10;
-		defaultBlockSize = 10;
-		this.setPager(1, 0, defaultPageSize, defaultBlockSize);
+		defaultPageSize = WebsiteConfiguration.defaultPageSize;
+		defaultBlockSize = WebsiteConfiguration.defaultBlockSize;
+		this.setPager(1, 0, defaultPageSize, defaultBlockSize, "", "goPage");
 	}
-	public Pager(long pageNum, long totalBoard, long pageSize, long blockSize) {
-		this.setPager(pageNum, totalBoard, pageSize, blockSize);
+	public Pager(long pageNum, long totalBoard, long pageSize, long blockSize, String pageMoveUrl, String pageMoveFuncName) {
+		this.setPager(pageNum, totalBoard, pageSize, blockSize, pageMoveUrl, pageMoveFuncName);
 	}
 	//--- ### 메서드 선언 영역.
-	public void setPager(long pageNum, long totalBoard, long pageSize, long blockSize) {
-		this.setPageNum(pageNum);
-		this.setTotalBoard(totalBoard);
-		this.setPageSize(pageSize);
-		this.setBlockSize(blockSize);
+	public void setPager(long pageNum, long totalBoard, long pageSize, long blockSize, String pageMoveUrl, String pageMoveFuncName) {
+		this.pageNum = pageNum;
+		this.totalBoard = totalBoard;
+		this.pageSize = pageSize;
+		this.blockSize = blockSize;
+		this.pageMoveUrl = pageMoveUrl;
+		this.pageMoveFuncName = pageMoveFuncName;
 	}
 	public void calcPage() {
 		// 총 게시물 수에 페이지당 표시되는 게시물 수를 나눠 전체 페이지의 개수를 구합니다.
 		totalPage=(long)Math.ceil((double)totalBoard/pageSize);
 		// 페이지 번호가 전체 페이지 수 보다 큰 경우 페이지 번호를 1로 설정
-		if(pageNum<=0 || pageNum>totalPage) {
-			pageNum=1;
-		}
+		if(pageNum<=0 || pageNum>totalPage) {pageNum=1;}//if
 		// 시작 및 끝 행 번호
 		startRow=(pageNum-1)*pageSize+1;
  		endRow=pageNum*pageSize;
-		if(endRow>totalBoard) {
-			endRow=totalBoard;
-		}
+		if(endRow>totalBoard) {endRow=totalBoard;}//if
 		limitOffset=startRow-1;
 		// 한 블럭에 출력되는 행 개수를 기준으로 페이지 번호를 계산
 		startPage=(pageNum-1)/blockSize*blockSize+1;
 		endPage=startPage+blockSize-1;
-		if(endPage>totalPage) {
-			endPage=totalPage;
-		}
+		if(endPage>totalPage) {endPage=totalPage;}//if
 		// 이전 및 다음 블럭의 시작 페이지 번호 계산
-		prevPage=startPage-blockSize;
-		nextPage=startPage+blockSize;
+		prevPage=Math.max(pageNum-1,1);
+		nextPage=Math.min(pageNum+1,totalPage);
 	}
 	public String getPagerDebugLogString(String debugSubTitleString) {
 		String returnValue = "";
+		String returnErrorValue = "";
 		StringBuffer logStringBuffer = null;
 		String logString = "";
 		SiteDebugger siteDebugger = null;
 		//---
+		if(!WebsiteConfiguration.debugFlag) {return returnErrorValue;}//if
 		logStringBuffer = new StringBuffer();
 		siteDebugger = DebugUtil.getSiteDebugger();
 		siteDebugger.appendDebugStartStringBuffer(logStringBuffer, "Pager", debugSubTitleString);

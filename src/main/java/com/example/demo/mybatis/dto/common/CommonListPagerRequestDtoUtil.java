@@ -16,5 +16,8 @@ public class CommonListPagerRequestDtoUtil {
 		commonListPagerRequestDao.setEndPage(commonListPagerRequestDto.getEndPage());
 		commonListPagerRequestDao.setPrevPage(commonListPagerRequestDto.getPrevPage());
 		commonListPagerRequestDao.setNextPage(commonListPagerRequestDto.getNextPage());
+		//---
+		commonListPagerRequestDao.setPageMoveUrl(commonListPagerRequestDto.getPageMoveUrl());
+		commonListPagerRequestDao.setPageMoveFuncName(commonListPagerRequestDto.getPageMoveFuncName());
 	}
 }

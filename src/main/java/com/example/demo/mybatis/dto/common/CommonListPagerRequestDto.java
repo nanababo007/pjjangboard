@@ -3,6 +3,7 @@ package com.example.demo.mybatis.dto.common;
 import org.springframework.stereotype.Component;
 
 import com.example.demo.mybatis.commons.pager.SiteDebugger;
+import com.example.demo.mybatis.configurations.WebsiteConfiguration;
 import com.example.demo.mybatis.dao.common.CommonListPagerRequestDao;
 import com.example.demo.mybatis.util.DebugUtil;
 
@@ -30,6 +31,9 @@ public class CommonListPagerRequestDto {
 	private long prevPage;
 	private long nextPage;
 	private long limitOffset;
+	//---
+	private String pageMoveUrl;
+	private String pageMoveFuncName;
 	//--- 생성자
 	public CommonListPagerRequestDto() {
 		long defaultPageSize = 0;
@@ -57,6 +61,9 @@ public class CommonListPagerRequestDto {
 		this.prevPage = commonListPagerRequestDao.getPrevPage();
 		this.nextPage = commonListPagerRequestDao.getNextPage();
 		this.limitOffset = commonListPagerRequestDao.getLimitOffset();
+		//---
+		this.pageMoveUrl = commonListPagerRequestDao.getPageMoveUrl();
+		this.pageMoveFuncName = commonListPagerRequestDao.getPageMoveFuncName();
 	}
 	public CommonListPagerRequestDao toPagerRequestDao() {
 		CommonListPagerRequestDao returnValue = new CommonListPagerRequestDao();
@@ -72,14 +79,20 @@ public class CommonListPagerRequestDto {
 		returnValue.setEndPage(this.endPage);
 		returnValue.setPrevPage(this.prevPage);
 		returnValue.setNextPage(this.nextPage);
+		//---
+		returnValue.setPageMoveUrl(this.pageMoveUrl);
+		returnValue.setPageMoveFuncName(this.pageMoveFuncName);
+		//---
 		return returnValue;
 	}
 	public String getPagerDebugLogString(String debugSubTitleString) {
 		String returnValue = "";
+		String returnErrorValue = "";
 		StringBuffer logStringBuffer = null;
 		String logString = "";
 		SiteDebugger siteDebugger = null;
 		//---
+		if(!WebsiteConfiguration.debugFlag) {return returnErrorValue;}//if
 		logStringBuffer = new StringBuffer();
 		siteDebugger = DebugUtil.getSiteDebugger();
 		siteDebugger.appendDebugStartStringBuffer(logStringBuffer, "CommonListPagerRequestDto", debugSubTitleString);
@@ -95,6 +108,8 @@ public class CommonListPagerRequestDto {
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "prevPage", this.prevPage);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "nextPage", this.nextPage);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "limitOffset", this.limitOffset);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "pageMoveUrl", this.pageMoveUrl);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "pageMoveFuncName", this.pageMoveFuncName);
 		siteDebugger.appendDebugEndStringBuffer(logStringBuffer);
 		logString = logStringBuffer.toString();
 		//---

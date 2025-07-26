@@ -1,6 +1,7 @@
 package com.example.demo.mybatis.dao.common;
 
 import com.example.demo.mybatis.commons.pager.SiteDebugger;
+import com.example.demo.mybatis.configurations.WebsiteConfiguration;
 import com.example.demo.mybatis.util.DebugUtil;
 
 import lombok.Getter;
@@ -27,12 +28,17 @@ public class CommonListPagerRequestDao {
 	private long nextPage;
 	private long limitOffset;
 	//---
+	private String pageMoveUrl;
+	private String pageMoveFuncName;
+	//---
 	public String getPagerDebugLogString(String debugSubTitleString) {
 		String returnValue = "";
+		String returnErrorValue = "";
 		StringBuffer logStringBuffer = null;
 		String logString = "";
 		SiteDebugger siteDebugger = null;
 		//---
+		if(!WebsiteConfiguration.debugFlag) {return returnErrorValue;}//if
 		logStringBuffer = new StringBuffer();
 		siteDebugger = DebugUtil.getSiteDebugger();
 		siteDebugger.appendDebugStartStringBuffer(logStringBuffer, "CommonListPagerRequestDao", debugSubTitleString);
@@ -48,6 +54,8 @@ public class CommonListPagerRequestDao {
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "prevPage", this.prevPage);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "nextPage", this.nextPage);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "limitOffset", this.limitOffset);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "pageMoveUrl", this.pageMoveUrl);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "pageMoveFuncName", this.pageMoveFuncName);
 		siteDebugger.appendDebugEndStringBuffer(logStringBuffer);
 		logString = logStringBuffer.toString();
 		//---

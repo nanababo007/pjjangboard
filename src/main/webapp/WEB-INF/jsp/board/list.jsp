@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.example.demo.mybatis.configurations.WebsiteConfiguration"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -13,7 +14,18 @@
 	${boardIndexObject.index+1}, ${boardItemObject.bdSeq}, ${boardItemObject.bdTitle} <br />
 	</c:forEach>
 	<p>
-		pager information : ${pager}
+		<%@ include file="/WEB-INF/jsp/include/pagerInc.jsp" %>
 	</p>
+	<script>
+		function goPage(pageNum){
+			var url = '';
+			var param = '';
+			//---
+			url = '/board/list';
+			param = '?pageNum='+pageNum;
+			//---
+			location.href = url+param;
+		}
+	</script>
 </body>
 </html>
