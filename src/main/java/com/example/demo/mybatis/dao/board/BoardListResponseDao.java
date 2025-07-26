@@ -16,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 public class BoardListResponseDao {
 	private long bdSeq;
 	private String bdTitle;
+	private String bdCont;
 	//---
 	public String getDebugLogString(String debugSubTitleString) {
 		String returnValue = "";
@@ -30,6 +31,7 @@ public class BoardListResponseDao {
 		siteDebugger.appendDebugStartStringBuffer(logStringBuffer, "BoardInsertRequestDao", debugSubTitleString);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "bdSeq", this.bdSeq);
 		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "bdTitle", this.bdTitle);
+		siteDebugger.appendDebugBodyStringBuffer(logStringBuffer, "bdCont", this.bdCont);
 		siteDebugger.appendDebugEndStringBuffer(logStringBuffer);
 		logString = logStringBuffer.toString();
 		//---

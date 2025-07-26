@@ -7,6 +7,7 @@
 		SELECT
 			a.bd_seq as bdSeq
 			,a.bd_title as bdTitle
+			,a.bd_cont as bdCont
 		<include refid="sqlGetBoardListFromQuery"></include>
 		ORDER BY
 			a.bd_title desc

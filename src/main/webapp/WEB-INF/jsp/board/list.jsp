@@ -4,28 +4,28 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>View Test Page</title>
+	<%@ include file="/WEB-INF/jsp/include/headInc.jsp" %>
+	<%@ include file="listCssInc.jsp" %>
+	<title>게시판 페이지</title>
 </head>
 <body>
-	<h2>Hello! ${name}</h2>
-	<div>JSP List Test</div>
-	<c:forEach var="boardItemObject" items="${boardList}" varStatus="boardIndexObject">
-	${boardIndexObject.index+1}, ${boardItemObject.bdSeq}, ${boardItemObject.bdTitle} <br />
-	</c:forEach>
-	<p>
-		<%@ include file="/WEB-INF/jsp/include/pagerInc.jsp" %>
-	</p>
-	<script>
-		function goPage(pageNum){
-			var url = '';
-			var param = '';
-			//---
-			url = '/board/list';
-			param = '?pageNum='+pageNum;
-			//---
-			location.href = url+param;
-		}
-	</script>
+<div class="layout">
+	<div class="sidebar">
+		<%@ include file="/WEB-INF/jsp/include/menuInc.jsp" %>
+	</div>
+	<div class="content">
+		<h2>게시판</h2>
+		<div>JSP List Test</div>
+		<hr/>
+		<div id="listLayer" class="margin-top-middle-class">
+			<c:forEach var="boardItemObject" items="${boardList}" varStatus="boardIndexObject">
+			<h3>${boardIndexObject.index+1}. ${boardItemObject.bdTitle} (${boardItemObject.bdSeq})</h3>
+			<div><p>${boardItemObject.bdCont}</p></div>
+			</c:forEach>
+		</div>
+		<p><%@ include file="/WEB-INF/jsp/include/pagerInc.jsp" %></p>
+	</div>
+</div>
+<%@ include file="listScriptInc.jsp" %>
 </body>
 </html>

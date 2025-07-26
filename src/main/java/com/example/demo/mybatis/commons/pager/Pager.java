@@ -51,7 +51,7 @@ public class Pager {
 		//---
 		defaultPageSize = WebsiteConfiguration.defaultPageSize;
 		defaultBlockSize = WebsiteConfiguration.defaultBlockSize;
-		this.setPager(1, 0, defaultPageSize, defaultBlockSize, "", "goPage");
+		this.setPager(1, 0, defaultPageSize, defaultBlockSize, "", "pageFunctions.goPage");
 	}
 	public Pager(long pageNum, long totalBoard, long pageSize, long blockSize, String pageMoveUrl, String pageMoveFuncName) {
 		this.setPager(pageNum, totalBoard, pageSize, blockSize, pageMoveUrl, pageMoveFuncName);
