@@ -13,7 +13,7 @@ public class RootViewController {
 		String viewName = "";
 		ModelAndView mav = null;
 		//---
-		viewName = "root/index";
+		viewName = "root/indexPage";
 		mav = new ModelAndView("test");
 		//---
 		mav.addObject("data", "root page data");

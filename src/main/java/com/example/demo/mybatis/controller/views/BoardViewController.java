@@ -36,7 +36,7 @@ public class BoardViewController {
 		List<BoardListResponseDto> boardListResponseDto = null;
 		long boardListTotalCount = 0;
 		//---
-		viewName = "board/list";
+		viewName = "board/listPage";
 		boardListRequestDao = boardListRequestDto.toRequestDao();
 		boardListTotalCount = boardService.getBoardListTotalCount(boardListRequestDao);
 		PagerUtil.calcPageForDao(pager,boardListRequestDao,boardListTotalCount);

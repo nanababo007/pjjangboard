@@ -1,5 +1,6 @@
 body{margin:0;padding:0;}
 a {text-decoration:none;}
+.font-bold-class {font-weight:bold;}
 .margin-bottom-large-class {margin-bottom:30px;}
 .margin-bottom-middle-class {margin-bottom:20px;}
 .margin-bottom-small-class {margin-bottom:10px;}

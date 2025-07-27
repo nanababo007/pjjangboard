@@ -10,7 +10,7 @@
 	<a href="${pager.pageMoveUrl}?pageNum=${pager.prevPage}">이전</a>
 	<c:forEach var="pageItemNumber" begin="${pager.startPage}" end="${pager.endPage}" step="1">
 		<c:if test="${pageItemNumber > 1}"> | </c:if>
-		<a href="${pager.pageMoveUrl}?pageNum=${pageItemNumber}">${pageItemNumber}</a>
+		<a href="${pager.pageMoveUrl}?pageNum=${pageItemNumber}" class="<c:if test="${pageItemNumber eq param.pageNum}"> font-bold-class </c:if>">${pageItemNumber}</a>
 	</c:forEach>
 	<a href="${pager.pageMoveUrl}?pageNum=${pager.nextPage}">다음</a>
 	<a href="${pager.pageMoveUrl}?pageNum=${pager.totalPage}">끝</a>
@@ -22,7 +22,7 @@
 	<a href="javascript:${pager.pageMoveFuncName}(${pager.prevPage});">이전</a>
 	<c:forEach var="pageItemNumber" begin="${pager.startPage}" end="${pager.endPage}" step="1">
 		<c:if test="${pageItemNumber > 1}"> | </c:if>
-		<a href="javascript:${pager.pageMoveFuncName}(${pageItemNumber});">${pageItemNumber}</a>
+		<a href="javascript:${pager.pageMoveFuncName}(${pageItemNumber});" class="<c:if test="${pageItemNumber eq param.pageNum}"> font-bold-class </c:if>">${pageItemNumber}</a>
 	</c:forEach>
 	<a href="javascript:${pager.pageMoveFuncName}(${pager.nextPage});">다음</a>
 	<a href="javascript:${pager.pageMoveFuncName}(${pager.totalPage});">끝</a>
