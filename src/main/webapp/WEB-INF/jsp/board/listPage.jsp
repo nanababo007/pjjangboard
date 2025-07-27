@@ -17,8 +17,18 @@
 		<h2>게시판 목록</h2>
 		<div>멀티 게시판 목록 관리 페이지 입니다.</div>
 		<hr class="margin-bottom-middle-class" />
-		<div class="button-layer-class">
-			<input type="button" value="등록" />
+		<div id="boardBarLayer">
+			<div class="button-layer-class">
+				<button type="button" id="registBoardButton">등록</button>
+			</div>
+			<div class="search-container">
+				<form name="searchForm" action="/board/list" method="get">
+					<input type="hidden" name="pageNum" value="${param.pageNum}" />
+					<input type="text" name="searchWord" class="search-text-class" value="${param.searchWord}" placeholder="검색어를 입력하세요" />
+					<button type="submit" id="searchButton">검색</button>
+					<button type="submit" id="initSearchButton">검색 초기화</button>
+				</form>
+			</div>
 		</div>
 		<div id="listLayer">
 			<c:forEach var="boardItemObject" items="${boardList}" varStatus="boardIndexObject">

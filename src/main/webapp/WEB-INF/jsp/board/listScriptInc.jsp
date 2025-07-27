@@ -4,7 +4,25 @@ $(function(){
 	var pageObjects = {};
 	var pageFunctions = {};
 	//--- 변수 선언.
+	pageObjects.searchFormObject = document.searchForm;
+	pageObjects.searchFormJqueryObject = $(pageObjects.searchFormObject);
+	pageObjects.searchButtonJqueryObject = $('#searchButton');
+	pageObjects.initSearchButtonJqueryObject = $('#initSearchButton');
 	pageObjects.listLayerJqueryObject = $('#listLayer');
+	pageObjects.registBoardButtonJqueryObject = $('#registBoardButton');
+	//--- 이벤트 함수 선언.
+	pageObjects.registBoardButtonJqueryObject.click(function(e){
+		e.preventDefault();
+	});
+	pageObjects.searchButtonJqueryObject.click(function(e){
+		e.preventDefault();
+		setNumberInputDefaultValue(pageObjects.searchFormObject.pageNum,1);
+		pageObjects.searchFormJqueryObject.submit();
+	});
+	pageObjects.initSearchButtonJqueryObject.click(function(e){
+		e.preventDefault();
+		if(confirm('검색을 초기화 하시겠습니까?')){location.href = '/board/list';}//if
+	});
 	//--- 일반 함수 선언.
 	function initPage(){
 		pageObjects.listLayerJqueryObject.accordion();
