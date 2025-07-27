@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.mybatis.dao.board.BoardDeleteRequestDao;
 import com.example.demo.mybatis.dao.board.BoardInsertRequestDao;
 import com.example.demo.mybatis.dao.board.BoardListRequestDao;
 import com.example.demo.mybatis.dao.board.BoardListResponseDao;
@@ -27,13 +28,16 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardListResponseDao> getBoardAllList(BoardListRequestDao boardListRequestDao) throws Exception {
 		return boardMapper.getBoardAllList(boardListRequestDao);
 	}
-	public int insertBoard(BoardInsertRequestDao boarInsertRequestDao) {
+	public int insertBoard(BoardInsertRequestDao boarInsertRequestDao) throws Exception {
 		return boardMapper.insertBoard(boarInsertRequestDao);
 	}
-	public int updateBoard(BoardUpdateRequestDao boardUpdateRequestDao) {
+	public int updateBoard(BoardUpdateRequestDao boardUpdateRequestDao) throws Exception {
 		return boardMapper.updateBoard(boardUpdateRequestDao);
 	}
-	public int updateDeleteBoard(BoardUpdateDeleteRequestDao boardUpdateDeleteRequestDao) {
+	public int updateDeleteBoard(BoardUpdateDeleteRequestDao boardUpdateDeleteRequestDao) throws Exception {
 		return boardMapper.updateDeleteBoard(boardUpdateDeleteRequestDao);
+	}
+	public int deleteBoard(BoardDeleteRequestDao boardDeleteRequestDao) throws Exception {
+		return boardMapper.deleteBoard(boardDeleteRequestDao);
 	}
 }

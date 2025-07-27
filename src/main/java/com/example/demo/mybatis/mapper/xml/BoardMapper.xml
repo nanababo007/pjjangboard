@@ -8,6 +8,12 @@
 			a.bd_seq as bdSeq
 			,a.bd_title as bdTitle
 			,a.bd_cont as bdCont
+			,date_format(a.created_time, '%Y-%m-%d') as createdDateString
+			,date_format(a.created_time, '%Y-%m-%d %H:%i:%s') as createdDateTimeString
+			,a.created_by as createdBy
+			,date_format(a.modified_time, '%Y-%m-%d') as modifiedDateString
+			,date_format(a.modified_time, '%Y-%m-%d %H:%i:%s') as modifiedDateTimeString
+			,a.modified_by as modifiedBy
 		<include refid="sqlGetBoardListFromQuery"></include>
 		ORDER BY
 			a.bd_title desc
@@ -26,6 +32,13 @@
 		SELECT
 			a.bd_seq as bdSeq
 			,a.bd_title as bdTitle
+			,a.bd_cont as bdCont
+			,date_format(a.created_time, '%Y-%m-%d') as createdDateString
+			,date_format(a.created_time, '%Y-%m-%d %H:%i:%s') as createdDateTimeString
+			,a.created_by as createdBy
+			,date_format(a.modified_time, '%Y-%m-%d') as modifiedDateString
+			,date_format(a.modified_time, '%Y-%m-%d %H:%i:%s') as modifiedDateTimeString
+			,a.modified_by as modifiedBy
 		<include refid="sqlGetBoardListFromQuery"></include>
 		limit 10000
 	</select>
@@ -59,5 +72,11 @@
 			a.del_yn = 'Y'
 		where a.bd_seq = #{bd_seq}
 	</update>
+
+	<delete id="deleteBoard" parameterType="BoardDeleteRequestDao">
+		/* BoardMapper.deleteBoard */
+		delete from tb_board_info
+		where a.bd_seq = #{bd_seq}
+	</delete>
 
 </mapper>

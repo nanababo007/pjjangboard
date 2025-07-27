@@ -2,6 +2,7 @@ package com.example.demo.mybatis.service;
 
 import java.util.List;
 
+import com.example.demo.mybatis.dao.board.BoardDeleteRequestDao;
 import com.example.demo.mybatis.dao.board.BoardInsertRequestDao;
 import com.example.demo.mybatis.dao.board.BoardListRequestDao;
 import com.example.demo.mybatis.dao.board.BoardListResponseDao;
@@ -12,7 +13,8 @@ public interface BoardService {
 	public List<BoardListResponseDao> getBoardList(BoardListRequestDao boardListRequestDao) throws Exception;
 	public long getBoardListTotalCount(BoardListRequestDao boardListRequestDao) throws Exception;
 	public List<BoardListResponseDao> getBoardAllList(BoardListRequestDao boardListRequestDao) throws Exception;
-	public int insertBoard(BoardInsertRequestDao boarInsertRequestDao);
-	public int updateBoard(BoardUpdateRequestDao boardUpdateRequestDao);
-	public int updateDeleteBoard(BoardUpdateDeleteRequestDao boardUpdateDeleteRequestDao);
+	public int insertBoard(BoardInsertRequestDao boarInsertRequestDao) throws Exception;
+	public int updateBoard(BoardUpdateRequestDao boardUpdateRequestDao) throws Exception;
+	public int updateDeleteBoard(BoardUpdateDeleteRequestDao boardUpdateDeleteRequestDao) throws Exception;
+	public int deleteBoard(BoardDeleteRequestDao boardDeleteRequestDao) throws Exception;
 }
